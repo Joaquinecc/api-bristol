@@ -32,7 +32,6 @@ pip-delete-this-directory.txt
 # PyTest cache
 .pytest_cache/
 
-# Coverage
 .coverage
 coverage.xml
 
