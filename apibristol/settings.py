@@ -12,22 +12,27 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
-
+import json
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
+try:
+    filepath = os.path.join(BASE_DIR, "secrets.json")
+    with open(filepath) as handle:
+        secrets = json.load(handle)
+except IOError:
+    secrets = {"secret_key": "aaa"}
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-+#weueg#3s=#9k3#z5di*9y)^*jh!^d92dmmzv^8i@vtx!9$hn'
+# SECURITY WARNING: keep the secret key used in production secret!
+SECRET_KEY = secrets.get("secret_key")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = secrets.get("debug")
 
-ALLOWED_HOSTS = ["*"]
-
+ALLOWED_HOSTS = secrets.get("allowed_hosts")
 
 # Application definition
 
@@ -79,9 +84,16 @@ WSGI_APPLICATION = 'apibristol.wsgi.application'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': str(os.path.join(BASE_DIR, "db.sqlite3")),
+     "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+        'OPTIONS':  {
+        'options': '-c search_path='+secrets.get("schemas")
+             },
+        "NAME": secrets.get("db_name"),
+        "USER": secrets.get("db_user"),
+        "PASSWORD": secrets.get("db_password"),
+        "HOST": secrets.get("db_host"),
+        "PORT": secrets.get("db_port"),
     }
 }
 
