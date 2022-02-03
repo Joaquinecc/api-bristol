@@ -4,6 +4,7 @@ from django.db import models
 class Promotion(models.Model):
     cod_cliente = models.CharField( max_length=150)
     articulocodigo = models.CharField( max_length=150)
+    prom_name = models.CharField( max_length=150)
     rank= models.PositiveSmallIntegerField()
     weight= models.FloatField()
     created_at = models.DateTimeField(auto_now_add=True)
