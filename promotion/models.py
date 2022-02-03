@@ -7,6 +7,7 @@ class Promotion(models.Model):
     rank= models.PositiveSmallIntegerField()
     weight= models.FloatField()
     created_at = models.DateTimeField(auto_now_add=True)
+    key_prom= models.PositiveIntegerField(default=1)
     def __str__(self):
         return self.cod_cliente + " - "+self.articulocodigo
 
