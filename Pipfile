@@ -12,6 +12,7 @@ djangorestframework = "*"
 django-cors-headers = "*"
 django-extensions = "*"
 werkzeug = "*"
+pyopenssl = "*"
 
 [requires]
 python_version = "3"
