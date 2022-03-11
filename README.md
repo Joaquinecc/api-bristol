@@ -32,3 +32,4 @@
 6. Run migrations: `python manage.py migrate`
 7. Create SuperUser: `python manage.py createsuperuser`
 8. Run Development Server: `python manage.py runserver`
+9. Run as https service `python manage.py runserver_plus --cert-file cert.pem --key-file key.pem 0.0.0.0:8000`
