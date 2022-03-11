@@ -53,3 +53,4 @@ drf_example
 
 secrets.json
 db.sqlite3
+*.pem
