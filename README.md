@@ -1,5 +1,5 @@
 # TABLEU PROMOTION EXTENSION BACKEND
-
+El desarrolo de esta api es unicamente para ofrecer un vista, para poder almacenar la promocion generada en conjuntos con sus recomendaciones. A cada promción se le genera un ID unico
 ## Requirements
 
 - [Python >= 3.6](https://www.python.org/)
